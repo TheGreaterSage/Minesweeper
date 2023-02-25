@@ -16,12 +16,21 @@ void setup ()
     //your code to initialize buttons goes here
     buttons = new MSButton[NUM_ROWS][NUM_COLS];
     
-    
+    mines = new ArrayList<MSButton>();
     setMines();
 }
 public void setMines()
 {
-    //your code
+    int setRow = (int) (Math.random()*NUM_ROWS);
+    int setCol = (int) (Math.random()*NUM_COLS);
+    for(int i = 0; i < 100; i++) {
+        if(mines.contains(buttons[setRow][setCol])) {
+            setMines(); 
+        }
+        else {
+          mines.add(buttons[setRow][setCol]);
+        }
+    }
 }
 
 public void draw ()
@@ -63,8 +72,8 @@ public class MSButton
     
     public MSButton ( int row, int col )
     {
-        // width = 400/NUM_COLS;
-        // height = 400/NUM_ROWS;
+        width = 400/NUM_COLS;
+        height = 400/NUM_ROWS;
         myRow = row;
         myCol = col; 
         x = myCol*width;
@@ -84,8 +93,8 @@ public class MSButton
     {    
         if (flagged)
             fill(0);
-        // else if( clicked && mines.contains(this) ) 
-        //     fill(255,0,0);
+        else if( clicked && mines.contains(this) ) 
+            fill(255,0,0);
         else if(clicked)
             fill( 200 );
         else 
