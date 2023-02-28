@@ -66,8 +66,8 @@ public int countMines(int row, int col)
     int numMines = 0;
     for (int i = row-1; i < row+2; i++) {
       for (int j = col-1; j < col+2; j++) {
-        if (isValid(i, j) && bombs.contains(buttons[i][j])) {
-          numBombs+=1;
+         if (isValid(i, j) && mines.contains(buttons[i][j])) {
+          numMines+=1;
         }
       }
     }
