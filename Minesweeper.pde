@@ -55,7 +55,17 @@ public void displayLosingMessage()
 }
 public void displayWinningMessage()
 {
-    //your code here
+  buttons[9][6].setLabel("Y");
+  buttons[9][7].setLabel("O");
+  buttons[9][8].setLabel("U");
+  buttons[9][9].setLabel(" ");
+  buttons[9][10].setLabel("W");
+  buttons[9][11].setLabel("I");
+  buttons[9][12].setLabel("N");
+  buttons[9][13].setLabel(".");
+  for (int i = 6; i < 14; i++) {
+    buttons[9][i].setColor(255);
+  }
 }
 public boolean isValid(int r, int c)
 {
