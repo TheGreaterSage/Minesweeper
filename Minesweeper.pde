@@ -65,7 +65,7 @@ public void displayLosingMessage()
   buttons[9][11].setLabel("O");
   buttons[9][12].setLabel("S");
   buttons[9][13].setLabel("E");
-  
+  noLoop();
 }
 public void displayWinningMessage()
 {
@@ -77,7 +77,7 @@ public void displayWinningMessage()
   buttons[9][11].setLabel("I");
   buttons[9][12].setLabel("N");
   buttons[9][13].setLabel("!");
-  
+  noLoop();
 }
 public boolean isValid(int r, int c)
 {
@@ -129,11 +129,11 @@ public class MSButton
             displayLosingMessage();
         }
         else if (countMines(myRow, myCol) > 0) {
-            setLabel(str(countBombs(myRow, myCol)));
+            setLabel(str(countMines(myRow, myCol)));
         } 
         else {
-            for (int row = r-1; row < r+2; row++) {
-                for (int col = c-1; col < c+2; col++) {
+            for (int row = myRow-1; row < myRow+2; row++) {
+                for (int col = myCol-1; col < myCol+2; col++) {
                     if (isValid(row, col) && !buttons[row][col].isClicked()) {
                         buttons[row][col].mousePressed();
                     }
@@ -167,5 +167,11 @@ public class MSButton
     public boolean isFlagged()
     {
         return flagged;
+    }
+    
+   
+    public boolean isClicked()
+    {
+        return clicked;
     }
 }
