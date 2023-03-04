@@ -65,6 +65,9 @@ public void displayLosingMessage()
   buttons[9][11].setLabel("O");
   buttons[9][12].setLabel("S");
   buttons[9][13].setLabel("E");
+  for (int i = 0; i < mines.size(); i++)
+    if (mines.get(i).isFlagged() == false)
+      mines.get(i).clicked = true;
   noLoop();
 }
 public void displayWinningMessage()
