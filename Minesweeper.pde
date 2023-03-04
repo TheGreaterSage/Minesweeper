@@ -6,7 +6,7 @@ private MSButton[][] buttons; //2d array of minesweeper buttons
 public final static int NUM_ROWS = 20;
 public final static int NUM_COLS = 20;
 private ArrayList <MSButton> mines; //ArrayList of just the minesweeper buttons that are mined
-
+private boolean isLost = false;
 void setup ()
 {
     size(400, 400);
@@ -46,12 +46,26 @@ public void draw ()
 }
 public boolean isWon()
 {
-    //your code here
-    return false;
+    for (int i = 0; i < NUM_ROWS; i++) {
+        for (int j = 0; j < NUM_COLS; j++) {
+            if (!mines.contains(buttons[i][j]) && buttons[i][j].isClicked() == false) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 public void displayLosingMessage()
 {
-    //your code here
+  buttons[9][6].setLabel("Y");
+  buttons[9][7].setLabel("O");
+  buttons[9][8].setLabel("U");
+  buttons[9][9].setLabel(" ");
+  buttons[9][10].setLabel("L");
+  buttons[9][11].setLabel("O");
+  buttons[9][12].setLabel("S");
+  buttons[9][13].setLabel("E");
+  
 }
 public void displayWinningMessage()
 {
@@ -62,10 +76,8 @@ public void displayWinningMessage()
   buttons[9][10].setLabel("W");
   buttons[9][11].setLabel("I");
   buttons[9][12].setLabel("N");
-  buttons[9][13].setLabel(".");
-  for (int i = 6; i < 14; i++) {
-    buttons[9][i].setColor(255);
-  }
+  buttons[9][13].setLabel("!");
+  
 }
 public boolean isValid(int r, int c)
 {
@@ -113,6 +125,21 @@ public class MSButton
                 clicked = false;
             }
          }
+        else if(mines.contains(this) {
+            displayLosingMessage();
+        }
+        else if (countMines(myRow, myCol) > 0) {
+            setLabel(str(countBombs(myRow, myCol)));
+        } 
+        else {
+            for (int row = r-1; row < r+2; row++) {
+                for (int col = c-1; col < c+2; col++) {
+                    if (isValid(row, col) && !buttons[row][col].isClicked()) {
+                        buttons[row][col].mousePressed();
+                    }
+                }
+                }
+        }
     }
     public void draw () 
     {    
