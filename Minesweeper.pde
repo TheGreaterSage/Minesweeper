@@ -125,7 +125,7 @@ public class MSButton
                 clicked = false;
             }
          }
-        else if(mines.contains(this) {
+        else if(mines.contains(this)) {
             displayLosingMessage();
         }
         else if (countMines(myRow, myCol) > 0) {
