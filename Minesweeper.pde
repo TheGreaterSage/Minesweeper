@@ -68,7 +68,7 @@ public void displayLosingMessage()
   for (int i = 0; i < mines.size(); i++)
     if (mines.get(i).isFlagged() == false)
       mines.get(i).clicked = true;
-  noLoop();
+  
 }
 public void displayWinningMessage()
 {
@@ -80,7 +80,7 @@ public void displayWinningMessage()
   buttons[9][11].setLabel("I");
   buttons[9][12].setLabel("N");
   buttons[9][13].setLabel("!");
-  noLoop();
+  
 }
 public boolean isValid(int r, int c)
 {
